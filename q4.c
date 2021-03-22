@@ -19,6 +19,44 @@ struct Node
 
 struct Node *HEAD = NULL;
 
+// Prototypes
+void enqueue(int, int);
+void dequeue();
+void display();
+
+int main()
+{
+	int choice, flag = 1, value, priority;
+	while (flag == 1)
+	{
+		printf("1. Enqueue\n2. Dequeue\n3. DisplayQueue\n4. Exit\n");
+		scanf(" %d", &choice);
+		switch (choice)
+		{
+		case 1:
+			printf("Enter a value and priority: ");
+			scanf(" %d %d", &value, &priority);
+			enqueue(value, priority);
+			fflush(stdin);
+			printf("\n");
+			break;
+		case 2:
+			dequeue();
+			break;
+		case 3:
+			display();
+			break;
+		case 4:
+			flag = 0;
+			break;
+		default:
+			printf("Enter a valid option!!");
+			break;
+		}
+	}
+	return 0;
+}
+
 void enqueue(int value, int priority)
 {
 	struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
@@ -69,37 +107,4 @@ void display()
 		n = n->next;
 	}
 	printf("!!!\n");
-}
-
-int main()
-{
-	int choice, flag = 1, value, priority;
-	while (flag == 1)
-	{
-		printf("1. Enqueue\n2. Dequeue\n3. DisplayQueue\n4. Exit\n");
-		scanf(" %d", &choice);
-		switch (choice)
-		{
-		case 1:
-			printf("Enter a value and priority: ");
-			scanf(" %d %d", &value, &priority);
-			enqueue(value, priority);
-			fflush(stdin);
-			printf("\n");
-			break;
-		case 2:
-			dequeue();
-			break;
-		case 3:
-			display();
-			break;
-		case 4:
-			flag = 0;
-			break;
-		default:
-			printf("Enter a valid option!!");
-			break;
-		}
-	}
-	return 0;
 }

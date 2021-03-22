@@ -14,6 +14,71 @@ struct node
 
 struct node *HEAD = NULL;
 
+// Prototypes
+void ins_beg(int);
+void ins_end(int);
+void ins_after(int, int);
+void ins_bef(int, int);
+void delete_beg();
+void delete_end();
+void delete_specific(int);
+void display(struct node *);
+
+int main()
+{
+    do
+    {
+        printf("1. Insert Beg\n2. Insert end\n3.Insert after specific\n4.Insert before specific\n5.Delete Beg\n6.Delete End\n7.Delete Specific\n9.Display\n0.Exit ");
+        int n,
+            x, a;
+        printf("\n\nChoice:");
+        scanf("%d", &n);
+        switch (n)
+        {
+        case 0:
+            return 0;
+        case 1:
+            printf("Enter element: ");
+            scanf("%d", &x);
+            ins_beg(x);
+            break;
+        case 2:
+            printf("Enter element: ");
+            scanf("%d", &x);
+            ins_end(x);
+            break;
+        case 3:
+            printf("Enter element to be inserted: ");
+            scanf("%d", &x);
+            printf("Enter element after which this is to be inserted: ");
+            scanf("%d", &a);
+            ins_after(x, a);
+            break;
+        case 4:
+            printf("Enter element to be inserted: ");
+            scanf("%d", &x);
+            printf("Enter element before which this is to be inserted: ");
+            scanf("%d", &a);
+            ins_bef(x, a);
+            break;
+        case 5:
+            delete_beg();
+            break;
+        case 6:
+            delete_end();
+            break;
+        case 7:
+            printf("Enter element to be deleted: ");
+            scanf("%d", &x);
+            delete_specific(x);
+            break;
+        case 9:
+            display(HEAD);
+            break;
+        }
+    } while (1);
+}
+
 void ins_beg(int x)
 {
     struct node *n = (struct node *)malloc(sizeof(struct node));
@@ -148,59 +213,4 @@ void display(struct node *np)
         np = np->link;
     }
     printf("!!!\n");
-}
-
-int main()
-{
-    do
-    {
-        printf("1. Insert Beg\n2. Insert end\n3.Insert after specific\n4.Insert before specific\n5.Delete Beg\n6.Delete End\n7.Delete Specific\n9.Display\n0.Exit ");
-        int n,
-            x, a;
-        printf("\n\nChoice:");
-        scanf("%d", &n);
-        switch (n)
-        {
-        case 0:
-            return 0;
-        case 1:
-            printf("Enter element: ");
-            scanf("%d", &x);
-            ins_beg(x);
-            break;
-        case 2:
-            printf("Enter element: ");
-            scanf("%d", &x);
-            ins_end(x);
-            break;
-        case 3:
-            printf("Enter element to be inserted: ");
-            scanf("%d", &x);
-            printf("Enter element after which this is to be inserted: ");
-            scanf("%d", &a);
-            ins_after(x, a);
-            break;
-        case 4:
-            printf("Enter element to be inserted: ");
-            scanf("%d", &x);
-            printf("Enter element before which this is to be inserted: ");
-            scanf("%d", &a);
-            ins_bef(x, a);
-            break;
-        case 5:
-            delete_beg();
-            break;
-        case 6:
-            delete_end();
-            break;
-        case 7:
-            printf("Enter element to be deleted: ");
-            scanf("%d", &x);
-            delete_specific(x);
-            break;
-        case 9:
-            display(HEAD);
-            break;
-        }
-    } while (1);
 }

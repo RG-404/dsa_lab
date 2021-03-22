@@ -15,7 +15,6 @@ int rear = -1;
 void enqueue(int);
 void dequeue();
 int isEmpty();
-void showfront();
 void displayQueue();
 
 int main()
@@ -23,12 +22,12 @@ int main()
     int choice, flag = 1, value;
     while (flag == 1)
     {
-        printf("1. Enqueue\n2. Dequeue\n3. Showfront\n4. DisplayQueue\n5. Exit\n");
+        printf("1. Enqueue\n2. Dequeue\n3. DisplayQueue\n4. Exit\n");
         scanf(" %d", &choice);
         switch (choice)
         {
         case 1:
-            printf("Enter a value");
+            printf("Enter a value: ");
             scanf(" %d", &value);
             enqueue(value);
             break;
@@ -36,12 +35,9 @@ int main()
             dequeue();
             break;
         case 3:
-            showfront();
-            break;
-        case 4:
             displayQueue();
             break;
-        case 5:
+        case 4:
             flag = 0;
             break;
         }
@@ -75,19 +71,13 @@ void dequeue()
     if (isEmpty())
         printf("Queue is empty\n");
     else
-        //only one element
+    {
+        printf("%d dequeued\n", A[front]);
         if (front == rear)
-        front = rear = -1;
-    else
-        front = (front + 1) % SIZE;
-}
-
-void showfront()
-{
-    if (isEmpty())
-        printf("Queue is empty\n");
-    else
-        printf("element at front is: ", A[front]);
+            front = rear = -1;
+        else
+            front = (front + 1) % SIZE;
+    }
 }
 
 void displayQueue()
@@ -101,6 +91,7 @@ void displayQueue()
         {
             for (i = front; i <= rear; i++)
                 printf("%d ", A[i]);
+            printf("\n");
         }
         else
         {
@@ -116,6 +107,7 @@ void displayQueue()
                 printf("%d ", A[i]);
                 i++;
             }
+            printf("\n");
         }
     }
 }

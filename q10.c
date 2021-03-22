@@ -1,6 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Prototypes
+int l_search(int[], int, int);
+int b_search(int[], int, int);
+
+int main()
+{
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99}, searched, ch, index = -1;
+    printf("Enter element to be searched: ");
+    scanf(" %d", &searched);
+    printf("\nSelect method:\n1.Linear search\n2.Binary Search\n\n:");
+    scanf(" %d", &ch);
+    switch (ch)
+    {
+    case 1:
+        index = l_search(arr, sizeof(arr) / sizeof(int), searched);
+        break;
+    case 2:
+        index = b_search(arr, sizeof(arr) / sizeof(int), searched);
+        break;
+    default:
+        printf("Invalid option. Terminating program.");
+        break;
+    }
+    if (index >= 0)
+        printf("Found at index: %d\n", index);
+    else
+        printf("Element not found.\n");
+    return 0;
+}
+
 int l_search(int arr[], int size, int x)
 {
     int index = -1;
@@ -31,30 +61,4 @@ int b_search(int arr[], int size, int x)
             last = mid - 1;
     }
     return -1;
-}
-
-int main()
-{
-    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99}, searched, ch, index = -1;
-    printf("Enter element to be searched: ");
-    scanf(" %d", &searched);
-    printf("\nSelect method:\n1.Linear search\n2.Binary Search\n\n:");
-    scanf(" %d", &ch);
-    switch (ch)
-    {
-    case 1:
-        index = l_search(arr, sizeof(arr) / sizeof(int), searched);
-        break;
-    case 2:
-        index = b_search(arr, sizeof(arr) / sizeof(int), searched);
-        break;
-    default:
-        printf("Invalid option. Terminating program.");
-        break;
-    }
-    if (index >= 0)
-        printf("Found at index: %d\n", index);
-    else
-        printf("Element not found.\n");
-    return 0;
 }
